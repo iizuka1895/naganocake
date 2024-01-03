@@ -13,7 +13,9 @@
   <body>
     <header>
       <% if customer_signed_in? %>
-       
+        <li>
+            <%= link_to "マイページ", public_customer_path(current_customer) %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete%>
         </li>
