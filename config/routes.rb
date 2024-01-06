@@ -18,11 +18,16 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
 namespace :public do
   resources :items,only: [:index, :show]
-  resources :customers,only: [:edit, :update, :show]
+  resources :customers,only: [:edit, :update, :show] do
+    collection do
+      get 'check'
+      patch 'withdraw'
+    end
+  end
   resources :cart_items,only: [:index, :update, :create, :destroy]
   resources :orders,only: [:new, :index, :show, :create]
-  get 'edit/customers' => 'customers#edit', as: "edit"
-  patch 'update/customers' => 'customers#update', as: "update"
+  get '/customers/edit' => 'customers#edit', as: "edit"
+  patch '/customers/update' => 'customers#update', as: "update"
 end
 
 root 'public/homes#top'
