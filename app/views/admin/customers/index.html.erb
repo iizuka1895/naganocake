@@ -11,7 +11,7 @@
             <th>ステータス</th>
           </tr>
         </thead>
-        
+
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
@@ -19,7 +19,7 @@
                 <%= customer.id %>
               </td>
               <td>
-                <%= link_to "/admin/customers/#{customer.id}/edit" do %>
+                <%= link_to "/admin/customers/#{customer.id}" do %>
                   <%= customer.last_name %>
                   <%= customer.first_name %>
                 <% end %>

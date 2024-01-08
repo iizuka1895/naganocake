@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="mt-5 text-left"><%= @customers.last_name %><%= @customers.first_name %>さんの会員詳細</h2>
+    <div class="row m-5">
+      <div class="col-10 offset-1">
+        <table class="table">
+          <tr>
+            <th class="text-left">会員ID</th>
+            <td><%= @customers.id %></td>
+          </tr>
+          <tr>
+            <th class="text-left">氏名</th>
+            <td><%= @customers.last_name %>
+                <%= @customers.first_name %></td>
+          </tr>
+          <tr>
+            <th class="text-left">フリガナ</th>
+            <td><%= @customers.last_name_kana %>
+                <%= @customers.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="text-left">郵便番号</th>
+            <td><%= @customers.postal_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customers.adress %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customers.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customers.email %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <% if @customers.is_active == false %>
+              <td class="text-secondary">無効</td>
+            <% else %>
+              <td class="text-success">有効</td>
+            <% end %>
+          </tr>
+        </table>
+        <div class="d-flex justify-content-around">
+          <p><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %></p>
+        </div>
+      </div>
+    </div>
+</div>
