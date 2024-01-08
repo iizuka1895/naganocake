@@ -1,0 +1,21 @@
+<br>
+<div class="container">
+  <div class="row align-items-center my-box-light">
+    <div class="col my-box">
+      <%= image_tag @item.image, size: "300x250" %>
+    </div>
+  </div>
+  <div class="row align-items-end my-box-light">
+    <div class="col my-box">
+      <h3><%= @item.name %></h3>
+      <p><%= @item.introduction %></p>
+      <h4>¥<%= @item.add_tax_price.to_s(:delited) %></h4>
+      <p>(税込)</p>
+
+      <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

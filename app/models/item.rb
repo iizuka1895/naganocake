@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   
   def add_tax_price
+    self.price ||= 0
     (self.price * 1.1).round
   end
   
