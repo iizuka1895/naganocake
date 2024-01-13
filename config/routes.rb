@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 ## admin
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
@@ -24,7 +24,11 @@ namespace :public do
       patch 'withdraw'
     end
   end
-  resources :cart_items,only: [:index, :update, :create, :destroy]
+  resources :cart_items,only: [:index, :update, :create, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   resources :orders,only: [:new, :index, :show, :create]
   get '/customers/edit' => 'customers#edit', as: "edit"
   patch '/customers/update' => 'customers#update', as: "update"
