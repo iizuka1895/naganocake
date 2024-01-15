@@ -29,7 +29,12 @@ namespace :public do
       delete 'destroy_all'
     end
   end
-  resources :orders,only: [:new, :index, :show, :create]
+  resources :orders,only: [:new, :index, :show, :create] do
+    collection do
+      post 'confirm'
+      get 'thanx'
+    end
+  end
   get '/customers/edit' => 'customers#edit', as: "edit"
   patch '/customers/update' => 'customers#update', as: "update"
 end

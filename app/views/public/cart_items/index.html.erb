@@ -16,6 +16,7 @@
           <th><br></th>
         </thead>
         <tbody>
+        <% total = 0 %>
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= image_tag cart_item.item.image, size: "55x40" %>
@@ -28,7 +29,7 @@
               <% end %>
             </td>
             <td><%= cart_item.subtotal%></td>
-            <% @total = @total+ cart_item.subtotal %>
+            <% total = total+ cart_item.subtotal %>
             <td>
               <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, data: { confirm: "#{cart_item.item.name}を削除していいですか？" }, class: "btn btn-danger" %>
             </td>
@@ -40,7 +41,7 @@
       <table class="table text-right">
         <tr>
           <th>合計金額</th>
-          <td class="text-left">¥<%= @total %></td>
+          <td class="text-left">¥<%= total %></td>
         </tr>
       </table>
       <%= link_to "情報入力に進む", new_public_order_path, class: "btn btn-success center-block" %>
