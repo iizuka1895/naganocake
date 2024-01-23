@@ -1,0 +1,77 @@
+<div class="container">
+  <h2 class="my-5 text-left">注文履歴詳細</h2>
+  <div class="row justify-content-left">
+    <div class="col-xs-12">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= "#{@order.post_code} #{@order.adress} #{@order.name}" %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.method_of_payment_i18n %></td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-left">
+    <div class="col-xs-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% total = 0 %>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.add_tax_price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= order_detail.subtotal %></td>
+            </tr>
+          <% total += order_detail.subtotal %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="row justify-content-right">
+      <div class="col-xs-3 off-set-1 ">
+        <table class="table">
+          <tr>
+            <th>合計金額</th>
+            <td class="text-right col-xs-5">
+              <%= total %>
+            </td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td class="text-right col-xs-5">
+              <%= @order.postage %>
+            </td>
+          </tr>
+          <tr>
+            <th>請求合計金額</th>
+            <td class="text-right col-xs-5">
+              <%= @order.payment %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
