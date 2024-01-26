@@ -12,3 +12,18 @@
       </div>
     </div>
 </div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 mx-auto">
+      <h2>新着商品</h2>
+      <% @items.first(4).each do |item| %>
+        <%= link_to public_item_path(item.id) do %>
+          <p class="img-wrap"><%= image_tag item.image, size: "180x130" %></p>
+        <% end %>
+        <%= item.name %>
+        ¥<%= item.price %>
+      <% end %>
+    </div>
+  </div>
+</div>

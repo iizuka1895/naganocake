@@ -19,7 +19,7 @@
         <% else %>
            <%= link_to "NaganoCAKE", root_path, class:"header-title navbar-brand"%>
         <% end %>
-           
+
         <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,6 +31,9 @@
               </li>
               <li class="nav-item">
                 <%= link_to "商品一覧", public_items_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "注文履歴一覧", public_orders_path, class: "btn btn-outline-secondary mx-3 my-1" %>
               </li>
               <li class="nav-item">
                 <%= link_to "カート", public_cart_items_path, class: 'btn btn-outline-secondary mx-3 my-1'%>
@@ -47,6 +50,9 @@
               </li>
               <li class="nav-item">
                 <%= link_to "注文履歴一覧", admin_orders_path, class:'btn btn-outline-secondary mx-3 my-1'%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_admin_item_path, class: 'btn btn-outline-secondary mx-3 my-1' %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-secondary mx-3 my-1' %>
