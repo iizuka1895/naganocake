@@ -18,7 +18,7 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
 namespace :public do
   resources :items,only: [:index, :show]
-  resources :customers,only: [:edit, :update, :show] do
+  resource :customers,only: [:edit, :update, :show] do
     collection do
       get 'check'
       patch 'withdraw'

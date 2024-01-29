@@ -27,7 +27,7 @@
           <ul class="navbar-nav">
             <% if customer_signed_in? %>
               <li class="nav-item">
-                <%= link_to "マイページ", public_customer_path(current_customer), class: "btn btn-outline-secondary mx-3 my-1" %>
+                <%= link_to "マイページ", public_customers_path, class: "btn btn-outline-secondary mx-3 my-1" %>
               </li>
               <li class="nav-item">
                 <%= link_to "商品一覧", public_items_path, class: "btn btn-outline-secondary mx-3 my-1" %>
